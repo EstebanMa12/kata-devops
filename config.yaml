@@ -1,0 +1,12 @@
+# Configuración generada automáticamente
+app:
+  name: "kata-devops"
+  version: "1.0.0"
+  environment: "dev"
+  debug: true
+  endpoints:
+    - "dictionary"
+    - "costs"
+    - "concatenate"
+  tax:
+    default_rate: 0.09

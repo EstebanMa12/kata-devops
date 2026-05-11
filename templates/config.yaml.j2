@@ -1,0 +1,12 @@
+# Configuración generada automáticamente
+app:
+  name: "{{ app_name }}"
+  version: "{{ version }}"
+  environment: "{{ environment }}"
+  debug: {{ debug | lower }}
+  endpoints:
+{% for ep in endpoints %}
+    - "{{ ep }}"
+{% endfor %}
+  tax:
+    default_rate: {{ tax_rate }}
