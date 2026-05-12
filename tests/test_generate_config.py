@@ -2,6 +2,8 @@ import json
 import runpy
 from pathlib import Path
 
+import pytest
+
 from src.generate_config import generate_config
 
 
@@ -45,3 +47,24 @@ class TestGenerateConfig:
         default_out = tmp_path / "config.yaml"
         assert default_out.is_file()
         assert "kata-devops" in default_out.read_text(encoding="utf-8")
+
+    def test_nan_tax_rate_uses_default(self, tmp_path):
+        out = tmp_path / "c.yaml"
+        generate_config(tax_rate=float("nan"), output_path=str(out))
+        assert "default_rate: 0.09" in out.read_text(encoding="utf-8")
+
+    def test_invalid_endpoints_fallback(self, tmp_path):
+        out = tmp_path / "c.yaml"
+        generate_config(endpoints="not-a-list", output_path=str(out))
+        text = out.read_text(encoding="utf-8")
+        for ep in ("dictionary", "costs", "concatenate"):
+            assert json.dumps(ep, ensure_ascii=False) in text
+
+    def test_output_path_null_byte_rejected(self, tmp_path):
+        out = str(tmp_path / "bad\x00.yaml")
+        with pytest.raises(ValueError):
+            generate_config(output_path=out)
+
+    def test_empty_output_path_rejected(self, tmp_path):
+        with pytest.raises(ValueError):
+            generate_config(output_path="   ")

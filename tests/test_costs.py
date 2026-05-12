@@ -26,3 +26,31 @@ class TestCosts:
     def test_multiple_entries(self):
         costs = {"a": 10, "b": 20}
         assert get_total(costs, ["a", "b"], 0.05) == pytest.approx(31.50)
+
+    def test_costs_none_raises(self):
+        with pytest.raises(TypeError):
+            get_total(None, ["a"], 0.0)
+
+    def test_items_none_raises(self):
+        with pytest.raises(TypeError):
+            get_total({"a": 1}, None, 0.0)
+
+    def test_items_string_rejected(self):
+        with pytest.raises(TypeError):
+            get_total({"s": 1, "o": 2}, "so", 0.0)
+
+    def test_non_mapping_costs_raises(self):
+        with pytest.raises(TypeError):
+            get_total(["a", "b"], ["a"], 0.0)
+
+    def test_invalid_tax_defaults_to_zero_tax(self):
+        costs = {"a": 10}
+        assert get_total(costs, ["a"], float("nan")) == pytest.approx(10.00)
+
+    def test_non_numeric_cost_skipped(self):
+        costs = {"a": 10, "b": object()}
+        assert get_total(costs, ["a", "b"], 0.0) == pytest.approx(10.00)
+
+    def test_non_finite_cost_skipped(self):
+        costs = {"a": 10, "b": float("inf")}
+        assert get_total(costs, ["a", "b"], 0.0) == pytest.approx(10.00)
