@@ -35,5 +35,10 @@ def generate_config(
         f.write("\n".join(lines) + "\n")
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Punto de entrada para el ejecutable `generate-config` y `python -m src.generate_config`."""
     generate_config()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,11 @@
 venv/
+.venv/
 __pycache__/
 .cursor/
 .mypy_cache
 .ruff_cache
+dist/
+build/
+*.egg-info/
 coverage.xml
 xunit.xml

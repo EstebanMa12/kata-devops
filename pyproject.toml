@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kata-devops"
+version = "1.0.0"
+description = "Kata DevOps: ejercicios Python."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Esteban Maya" }]
+keywords = ["devops", "kata", "python", "pytest"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "bandit>=1.7",
+  "black>=24",
+  "build>=1.2",
+  "coverage[toml]>=7.14",
+  "mypy>=1.8",
+  "pytest>=9",
+  "pytest-cov>=7.1",
+  "ruff>=0.8",
+  "tox>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/EstebanMa12/kata-devops"
+Repository = "https://github.com/EstebanMa12/kata-devops"
+Issues = "https://github.com/EstebanMa12/kata-devops/issues"
+
+[project.scripts]
+generate-config = "src.generate_config:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src"]
+
+[tool.black]
+target-version = ["py39"]
+line-length = 88
+include = '\.pyi?$'
+extend-exclude = '/(\.eggs|\.git|\.tox|venv|\.venv|build|dist)/'
+
+[tool.ruff]
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.9"
+packages = ["src"]
+strict = false
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+
+[tool.coverage.run]
+relative_files = true
+source = ["src"]
+
+[tool.coverage.report]
+omit = ["*/tests/*"]
