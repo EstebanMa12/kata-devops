@@ -1,6 +1,6 @@
 class Dictionary:
-    def __init__(self):
-        self.entries = {}
+    def __init__(self) -> None:
+        self.entries: dict[str, str] = {}
 
     def newentry(self, word: str, definition: str) -> None:
         self.entries[word] = definition

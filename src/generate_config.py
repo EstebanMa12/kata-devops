@@ -36,7 +36,7 @@ def generate_config(
 
 
 def main() -> None:
-    """Punto de entrada para el ejecutable `generate-config` y `python -m src.generate_config`."""
+    """CLI: ejecutable ``generate-config`` o ``python -m src.generate_config``."""
     generate_config()
 
 

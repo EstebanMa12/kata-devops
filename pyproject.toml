@@ -65,7 +65,7 @@ select = ["E", "F", "I", "UP", "B"]
 ignore = []
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 packages = ["src"]
 strict = false
 warn_return_any = true

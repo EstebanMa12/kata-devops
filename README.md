@@ -5,6 +5,8 @@ Kata de **DevOps y Python**: lógica de negocio pequeña, tests con **pytest**, 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=EstebanMa12_kata-devops&metric=coverage)](https://sonarcloud.io/summary/new_code?id=EstebanMa12_kata-devops)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=EstebanMa12_kata-devops&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=EstebanMa12_kata-devops)
 
+[![CI](https://github.com/EstebanMa12/kata-devops/actions/workflows/ci.yml/badge.svg)](https://github.com/EstebanMa12/kata-devops/actions/workflows/ci.yml)
+
 ## Requisitos
 
 - **Python** 3.9, 3.10, 3.11 o 3.12 (alineado con CI y `pyproject.toml`).
