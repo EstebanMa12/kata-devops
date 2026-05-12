@@ -85,15 +85,6 @@ jobs:
       - name: Generate coverage and test reports
         run: tox -e coverage
 
-      - name: Debug - verify coverage file
-        run: |
-          echo "=== Checking coverage.xml ==="
-          ls -la coverage.xml || echo "coverage.xml NOT FOUND"
-          echo "=== Checking xunit.xml ==="
-          ls -la xunit.xml || echo "xunit.xml NOT FOUND"
-          echo "=== Coverage file contents (first 20 lines) ==="
-          cat coverage.xml 2>/dev/null | head -20 || echo "Cannot read coverage.xml"
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v2
         env:
