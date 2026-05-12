@@ -1,7 +1,7 @@
 import json
 import math
 from collections.abc import Iterable
-from typing import Optional
+from typing import Any, Optional, cast
 
 
 def _ensure_str(value: object, default: str) -> str:
@@ -14,7 +14,7 @@ def _ensure_str(value: object, default: str) -> str:
 
 def _sanitize_tax_rate(tax_rate: object, default: float = 0.09) -> float:
     try:
-        tr = float(tax_rate)
+        tr = float(cast(Any, tax_rate))
     except (TypeError, ValueError):
         return default
     if not math.isfinite(tr):

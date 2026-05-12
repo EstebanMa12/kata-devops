@@ -3,7 +3,6 @@ import runpy
 from pathlib import Path
 
 import pytest
-
 from src.generate_config import generate_config
 
 

@@ -1,5 +1,4 @@
 import pytest
-
 from src.concatenate import concatenate_nth_letters
 
 
