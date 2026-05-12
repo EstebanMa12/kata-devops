@@ -3,5 +3,3 @@ __pycache__/
 .cursor/
 .mypy_cache
 .ruff_cache
-coverage.xml
-.coverage
